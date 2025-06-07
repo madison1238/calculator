@@ -91,13 +91,25 @@ body {
 }
 .btns button {
   height: 100%;
-  /*max-height: 65px;*/
   max-width: 100%;
   margin: 5px 5px;
   border-radius: 15px;
   border: none;
   font-size: 40px;
   font-weight: 500;
+}
+
+button.num {
   background-color: rgb(48, 49, 54);
   color: rgb(57, 184, 255);
+}
+
+button.symbol {
+  background-color: rgb(0, 93, 178);
+  color: rgb(16, 157, 255);
+}
+
+button#equals {
+  background-color: rgb(23, 145, 255);
+  color: rgb(178, 218, 254);
 }
