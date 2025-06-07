@@ -1,34 +1,81 @@
-div {
+/*div {
   border: 2px solid red;
-}
+}*/
 
+* {
+  font-family: "funnel sans";
+}
 body {
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(218, 239, 254);
+  margin: 0;
   overflow: hidden;
 }
 
 .calculator {
-  background-color: rgb(24, 24, 30);
-  height: 95vh;
-  width: 375px;
+  background-color: rgb(23, 24, 26);
+  width: 340px;
+  height: 90vh;
   border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  box-shadow: 15px 0px 50px rgb(69, 171, 245);
+  align-items: stretch;
 }
 
 .display {
-  margin: 100px 25px 25px;
+  margin: 100px 0px 25px;
   height: 125px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0;
+}
+
+.display #input {
+  /*border: 2px solid red;*/
+  margin: 0;
+  color: white;
+  font-size: 50px;
+}
+
+.display #equation {
+  margin: 10px 0;
+  /*border: 2px solid red;*/
+  color: grey;
 }
 
 .btns {
-  margin: 75px 25px 25px;
+  margin: 75px 0px 25px;
   height: 350px;
-  padding: 25px;
+  padding: 0px;
   display: flex;
   justify-content: space-between;
+  align-content: space-between;
 }
 .row {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  padding: 0px;
+}
+button {
+  height: 100%;
+  /*max-height: 65px;*/
+  max-width: 100%;
+  margin: 5px 5px;
+  border-radius: 15px;
+  border: none;
+  font-size: 40px;
+  font-weight: 500;
+  background-color: rgb(48, 49, 54);
+  color: rgb(57, 184, 255);
 }
