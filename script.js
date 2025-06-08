@@ -9,7 +9,8 @@ const clearButton = document.querySelector('#clear-btn')
 
 let num1 
 let num2 
-let operator 
+let operator
+let result 
 
 function add(a,b){
     return a+b;
@@ -47,10 +48,10 @@ function run_calculation(n1, n2, sign){
     equationDisplay.textContent = '';
     equationDisplay.textContent = `${n1}${sign}${n2}= `;
     resultDisplay.textContent = '';
-    let answer = operate(n1, n2, sign)
-    let roundedAnswer = parseFloat(answer.toFixed(2))
-    resultDisplay.textContent = `${roundedAnswer}`;
-    num1 = roundedAnswer;
+    result = operate(n1, n2, sign)
+    result = parseFloat(result.toFixed(2))
+    resultDisplay.textContent = `${result}`;
+    num1 = result;
     operator = undefined;
     num2 = undefined;
     }
@@ -58,7 +59,7 @@ function run_calculation(n1, n2, sign){
 function appendNumbers(n1, n2){
     n1 ?fullNum = String(n1) + String(n2) : fullNum = n2
     console.log(fullNum)
-    return +fullNum;
+    return fullNum;
 }
 
 function setNull(){
@@ -95,3 +96,4 @@ clearButton.addEventListener('click', ()=> {
     equationDisplay.textContent = '';
     resultDisplay.textContent = '';
 })
+
