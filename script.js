@@ -47,8 +47,10 @@ function run_calculation(n1, n2, sign){
     equationDisplay.textContent = '';
     equationDisplay.textContent = `${n1}${sign}${n2}= `;
     resultDisplay.textContent = '';
-    resultDisplay.textContent = `${operate(n1, n2, sign)}`;
-    num1 = operate(n1, n2, sign);
+    let answer = operate(n1, n2, sign)
+    let roundedAnswer = parseFloat(answer.toFixed(2))
+    resultDisplay.textContent = `${roundedAnswer}`;
+    num1 = roundedAnswer;
     operator = undefined;
     num2 = undefined;
     }
