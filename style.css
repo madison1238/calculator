@@ -39,7 +39,7 @@ body {
   padding: 0;
 }
 
-.display #input {
+.display #result {
   /*border: 2px solid red;*/
   margin: 0;
   color: white;
@@ -72,6 +72,7 @@ body {
   align-items: center;
   border: none;
   margin: 5px 5px;
+  cursor: pointer;
 }
 
 .btns {
@@ -97,6 +98,7 @@ body {
   border: none;
   font-size: 40px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 button.num {
