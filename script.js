@@ -61,6 +61,12 @@ function appendNumbers(n1, n2){
     return +fullNum;
 }
 
+function setNull(){
+    num1 = undefined;
+    num2 = undefined;
+    operator = undefined;
+}
+
 
 equals.addEventListener('click', () => {
     if (num1 && num2 && operator){
@@ -85,9 +91,7 @@ symbolButtons.forEach(btn => {
 })
 
 clearButton.addEventListener('click', ()=> {
-    num1 = undefined;
-    num2 = undefined;
-    operator = undefined;
+    setNull();
     equationDisplay.textContent = '';
     resultDisplay.textContent = '';
 })
