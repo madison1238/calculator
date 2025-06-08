@@ -3,6 +3,7 @@ const resultDisplay = document.querySelector('.display #result')
 const equals = document.querySelector('#equals')
 const numberButtons = document.querySelectorAll('button.num')
 const symbolButtons = document.querySelectorAll('button.symbol')
+const clearButton = document.querySelector('#clear-btn')
 
 
 
@@ -81,3 +82,10 @@ symbolButtons.forEach(btn => {
     })
 })
 
+clearButton.addEventListener('click', ()=> {
+    num1 = undefined;
+    num2 = undefined;
+    operator = undefined;
+    equationDisplay.textContent = '';
+    resultDisplay.textContent = '';
+})
