@@ -1,12 +1,14 @@
 const equationDisplay = document.querySelector('.display #equation' )
 const resultDisplay = document.querySelector('.display #result')
-const equals = document.querySelector('.symbol#equals')
+const equals = document.querySelector('#equals')
+const numberButtons = document.querySelectorAll('button.num')
+const symbolButtons = document.querySelectorAll('button.symbol')
 
 
-//change to undefined for input
-let num1 = 1
-let num2 = 2
-let operator = '+'
+
+let num1 
+let num2 
+let operator 
 
 function add(a,b){
     return a+b;
@@ -50,8 +52,32 @@ function run_calculation(n1, n2, sign){
     num2 = undefined;
     }
 
+function appendNumbers(n1, n2){
+    n1 ?fullNum = String(n1) + String(n2) : fullNum = n2
+    console.log(fullNum)
+    return +fullNum;
+}
+
+
 equals.addEventListener('click', () => {
     if (num1 && num2 && operator){
         run_calculation(num1, num2, operator);
     }
 })
+
+numberButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        resultDisplay.textContent += btn.textContent;
+        operator
+            ? num2 = appendNumbers(num2, btn.textContent)
+            : num1 = appendNumbers(num1, btn.textContent)
+    })
+} )
+
+symbolButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        resultDisplay.textContent += btn.textContent;
+        operator = btn.textContent;
+    })
+})
+
