@@ -6,7 +6,7 @@ const symbolButtons = document.querySelectorAll('button.symbol')
 const clearButton = document.querySelector('#clear-btn')
 
 
-
+let justCalculated = false;
 let num1 
 let num2 
 let operator
@@ -81,6 +81,7 @@ function displayResult(num){
     num1 = result;
     operator = undefined;
     num2 = undefined;
+    justCalculated = true;
 }
 
 
@@ -92,20 +93,24 @@ equals.addEventListener('click', () => {
 
 numberButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-
+        if(justCalculated){
+            setNull();
+            resultDisplay.textContent = '';
+            equationDisplay.textContent = '';
+            justCalculated = false
+        }
         resultDisplay.textContent += btn.textContent;
         operator
             ? num2 = appendNumbers(num2, btn.textContent)
-            : num1 = appendNumbers(num1, btn.textContent)
-            
+            : num1 = appendNumbers(num1, btn.textContent)     
     })
 } )
 
 symbolButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-
-            resultDisplay.textContent += btn.textContent;
-            operator = btn.textContent;
+        if(justCalculated) justCalculated = false;
+        resultDisplay.textContent += btn.textContent;
+        operator = btn.textContent;
     })
 })
 
@@ -115,3 +120,6 @@ clearButton.addEventListener('click', ()=> {
     resultDisplay.textContent = '';
 })
 
+
+//show message when screen is too large
+//make it so that when u input multiple numbers the calc does one expression at a time
