@@ -101,6 +101,14 @@ numberButtons.forEach(btn => {
             justCalculated = false
         }
         resultDisplay.textContent += btn.textContent;
+
+        if (resultDisplay.textContent.length > 13){
+            alert('too many digits to display');
+            resultDisplay.textContent = ''
+            equationDisplay.textContent = ''
+            setNull();
+            return;
+        }
         operator
             ? num2 = appendNumbers(num2, btn.textContent)
             : num1 = appendNumbers(num1, btn.textContent)     
@@ -131,4 +139,3 @@ clearButton.addEventListener('click', ()=> {
 
 
 //show message when screen is too large
-//make it so that when u input multiple numbers the calc does one expression at a time
