@@ -4,6 +4,7 @@ const equals = document.querySelector('#equals')
 const numberButtons = document.querySelectorAll('button.num')
 const symbolButtons = document.querySelectorAll('button.symbol')
 const clearButton = document.querySelector('#clear-btn')
+const deleteButton = document. querySelector('#delete-button')
 
 
 let justCalculated = false;
@@ -102,7 +103,7 @@ numberButtons.forEach(btn => {
         }
         resultDisplay.textContent += btn.textContent;
 
-        if (resultDisplay.textContent.length > 13){
+        if (resultDisplay.textContent.length > 12){
             alert('too many digits to display');
             resultDisplay.textContent = ''
             equationDisplay.textContent = ''
@@ -137,5 +138,18 @@ clearButton.addEventListener('click', ()=> {
     resultDisplay.textContent = '';
 })
 
+deleteButton.addEventListener('click', () => {
+    resultDisplay.textContent = resultDisplay.textContent.slice(0,-1);
 
-//show message when screen is too large
+    if(operator && num2 !== undefined){
+        num2 = String(num2).slice(0,-1);
+        if(num2 === '') num2 = undefined;
+    }
+    else if(!operator && num1 !== undefined){
+        num1 = String(num1).slice(0,-1)
+        if(num1 === '') num1 = undefined
+    }
+    else if(operator && num1 !== undefined){
+        operator = undefined
+    }
+})
