@@ -13,22 +13,24 @@ let operator
 let result 
 
 function add(a,b){
-    return a+b;
+    return Number(a)+Number(b);
 }
 
 function subtract(a,b){
-    return a-b;
+    return Number(a)-Number(b);
 }
 
 function multiply(a,b){
-    return a*b;
+    return Number(a)*Number(b);
 }
 
 function divide(a,b){
-    if (a===0 && b === 0){
-        return 'erroor'
+    if (a==0 && b == 0){
+        setNull()
+        alert('cant divide by 0')
+        return
     }
-    return a/b
+    return Number(a) / Number(b)
 }
 
 function operate(num1, num2, operator){
@@ -48,12 +50,11 @@ function run_calculation(n1, n2, sign){
     equationDisplay.textContent = '';
     equationDisplay.textContent = `${n1}${sign}${n2}= `;
     resultDisplay.textContent = '';
-    result = operate(n1, n2, sign)
+    result = +(operate(n1, n2, sign))
     result = parseFloat(result.toFixed(2))
-    resultDisplay.textContent = `${result}`;
-    num1 = result;
-    operator = undefined;
-    num2 = undefined;
+    String(result).length > 13
+        ? tooLongToDisplay()
+        :displayResult(result);
     }
 
 function appendNumbers(n1, n2){
@@ -68,6 +69,20 @@ function setNull(){
     operator = undefined;
 }
 
+function tooLongToDisplay(){
+    setNull()
+    resultDisplay.textContent = ''
+    equationDisplay.textContent= ''
+    alert('too long to display')
+}
+
+function displayResult(num){
+    resultDisplay.textContent = `${num}`;
+    num1 = result;
+    operator = undefined;
+    num2 = undefined;
+}
+
 
 equals.addEventListener('click', () => {
     if (num1 && num2 && operator){
@@ -77,17 +92,20 @@ equals.addEventListener('click', () => {
 
 numberButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+
         resultDisplay.textContent += btn.textContent;
         operator
             ? num2 = appendNumbers(num2, btn.textContent)
             : num1 = appendNumbers(num1, btn.textContent)
+            
     })
 } )
 
 symbolButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        resultDisplay.textContent += btn.textContent;
-        operator = btn.textContent;
+
+            resultDisplay.textContent += btn.textContent;
+            operator = btn.textContent;
     })
 })
 
