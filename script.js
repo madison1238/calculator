@@ -27,8 +27,9 @@ function multiply(a,b){
 function divide(a,b){
     if (a==0 && b == 0){
         setNull()
+        resultDisplay.textContent = ''
+        equationDisplay.textContent = ''
         alert('cant divide by 0')
-        return
     }
     return Number(a) / Number(b)
 }
@@ -48,7 +49,7 @@ function operate(num1, num2, operator){
 
 function run_calculation(n1, n2, sign){
     equationDisplay.textContent = '';
-    equationDisplay.textContent = `${n1}${sign}${n2}= `;
+    equationDisplay.textContent = `${n1}${sign}${n2}`;
     resultDisplay.textContent = '';
     result = +(operate(n1, n2, sign))
     result = parseFloat(result.toFixed(2))
@@ -108,9 +109,17 @@ numberButtons.forEach(btn => {
 
 symbolButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+        const symbol = btn.textContent;
+
         if(justCalculated) justCalculated = false;
-        resultDisplay.textContent += btn.textContent;
-        operator = btn.textContent;
+
+        if(num1 && operator && num2) {
+            run_calculation(num1,num2,operator);
+
+}
+        operator = symbol;
+        resultDisplay.textContent += symbol;
+        justCalculated = false
     })
 })
 
